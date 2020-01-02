@@ -2,7 +2,7 @@ RenVM is a [Byzantine fault tolerant](https://en.wikipedia.org/wiki/Byzantine_fa
 
 RenVM empowers developers to build Ethereum smart contracts that use Bitcoin, Bitcoin Cash, and ZCash (see [Supported Blockchains](https://github.com/renproject/ren/wiki/Supported-Blockchains)). By doing so, users are able to access all of the trustless and permissionless financial services offered by [Ethereum DeFi](https://defiprime.com) using digital assets that are not native to Ethereum. For example: RenVM enables everyone to use BTC for swapping, trading, leveraging, lending, and collateralisation on Ethereum.
 
-## Design
+## Principles
 
 RenVM is designed and developed under three guiding principles:
 
@@ -25,7 +25,7 @@ RenVM can be broken down into three fundamental components:
 
 [Execution](https://github.com/renproject/ren/wiki/Execution) of RenVM transactions happens using a newly developed secure multi-party computation algorithm: RZL sMPC. Using this algorithm, RenVM contracts are able to keep theirs inputs/outputs/state secret. These "secret contrats" are the bedrock of what makes RenVM powerful, enabling secret computations on secret data. RZL sMPC has the same safety/liveliness properties as Hyperdrive, making them natural companions. It has been implemented as part of a more general purpose virtual machine, [z0](https://github.com/renproject/z0), which has also been designed to be minimal and easy to audit. A reviewed paper describing RZL sMPC, and proving its safety/liveliness, will be released soon.
 
-[Gateways](https://github.com/renproject/ren/wiki/Gateways) are special built-in RenVM contracts that provide interoperability between new and existing blockchains. For example, the `BTCEthereum` gateway allows users to send BTC from the Bitcoin blockchain to the Ethereum blockchain (and back again). This is done by generating and keeping ECDSA private keys in secret. No-one can see the private keys, and no-one can use them without consensus from the network. Gateways also make sure to shuffle and rotate these ECDSA private keys to protect against adaptive adversaries. For now, these are the only contracts that can be executed by RenVM.
+[Gateways](https://github.com/renproject/ren/wiki/Gateways) are special built-in RenVM contracts that provide interoperability between new and existing blockchains. For example, the `BTCEthereum` gateway allows users to send BTC from the Bitcoin blockchain to the Ethereum blockchain (and back again). This is done by generating and keeping ECDSA private keys in secret. No-one can see the private keys, and no-one can use them without consensus from the network. Every [epoch](), gateways periodically shuffle and rotate these ECDSA private keys to protect against adaptive adversaries. For now, these are the only contracts that are supported by RenVM.​
 
 ## Examples
 
