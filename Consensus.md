@@ -1,1 +1,1 @@
-> Work in progress! For more information about consensus, see [Hyperdrive](https://github.com/renproject/hyperdrive).
+> Work in progress! For more information about consensus, see the [Hyperdrive Wiki](https://github.com/renproject/hyperdrive/wiki).
