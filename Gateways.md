@@ -102,7 +102,9 @@ The ECDSA public key and encrypted Shamir’s secret shares are stored as state 
 
 ## Fees
 ​
-### Minting Fee
+### Minting Fees
+
+> Note: Minting curves have not been deployed yet. Currently, burning fees are set to a static 0.1%.
 
 Minting fees are taken when renBTC is minted on Ethereum. It is taken by minting a percentage of the renBTC to the [Darknode Payments]() smart contract instead of the `to` address. The minting fee has two purposes:
 
@@ -115,7 +117,9 @@ Minting fees are defined by the curve `fee(k, a, x) = k^(1-x^2)` where `k=0.0001
 
 This curve enforces a minimum minting fee, `k`, that approaches 100% as `L` approaches `R/3`. By letting the minting fee approach 100%, it is impossible to exceed `L>=R/3` by locking/minting BTC. The curve — and its parameters — are subject to governance, allowing RenVM to respond to changing market conditions and user behaviour. See [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness) for more information about how fees relate to the safety of RenVM.
 
-### Burning Fee
+### Burning Fees
+
+> Note: Burning curves have not been deployed yet. Currently, burning fees are set to a static 0.1%.
 
 Burning fees are taken when renBTC is burned from Ethereum. It is taken by not burning a percentage of the renBTC, and instead transferring it to the [Darknode Payments]() smart contract. The burning fee has two purposes:
 
@@ -129,6 +133,8 @@ Burning fees are defined by the curve `fee(k, a, x) = k/(x+1)^a` where `k=0.0001
 This curve enforces a maximum and minimum burning fee that approaches 0% as `L` approaches `R/3`. This makes it gradually cheaper for users to burn renBTC as the maximum limit is reached. The curve — and its parameters — are subject to governance, allowing RenVM to respond to changing market conditions and user behaviour. See [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness) for more information about how fees relate to the safety of RenVM.
 
 ### Continuous Fees
+
+> Note: Continuous fees have not been deployed yet.
 
 Minting and burning fees both help enforce the constraint `L <= R/3`. However, it is very likely that users will mint renBTC and keep it on Ethereum for extended periods of time (e.g. when lending or collateralising). This presents a challenge to RenVM, since no minting/burning fees are earned during this period.
 
