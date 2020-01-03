@@ -9,7 +9,7 @@
 7. [Gateways](https://github.com/renproject/ren/wiki/Gateways)
 8. [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness)
 9. [Supported Blockchains](https://github.com/renproject/ren/wiki/Supported-Blockchains)
-10. [REN](https://github.com/renproject/ren/wiki/REN)
+10. [REN (!)](https://github.com/renproject/ren/wiki/REN)
 11. [Darknode Registry (!)](https://github.com/renproject/ren/wiki/Darknode-Registry)
 12. [Darknode Payments (!)](https://github.com/renproject/ren/wiki/Darknode-Payments)
 13. [Darknode Slasher (!)](https://github.com/renproject/ren/wiki/Darknode-Slasher)
