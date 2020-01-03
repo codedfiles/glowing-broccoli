@@ -12,9 +12,9 @@ For the rest of this section, we will talk about the `BTCEthereum` gateway, beca
 
 For information about the design of other gateways, checkout:
 
-- [Gateways for Matic]()
-- [Gateways for Ripple]()
-- [Gateways for Binance]()
+- [Gateways for Matic](https://github.com/renproject/ren/wiki/Gateways-for-Matic)
+- [Gateways for Ripple](https://github.com/renproject/ren/wiki/Gateways-for-Ripple)
+- [Gateways for Binance](https://github.com/renproject/ren/wiki/Gateways-for-Binance)
 
 ## Overview​
 
