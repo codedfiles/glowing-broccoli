@@ -2,7 +2,7 @@ Safety is defined as a property that **always** holds, and liveliness is defined
 
 ## Safety
 
-​Both the [Tendermint consensus algorithm](https://arxiv.org/abs/1807.04938) and the [RZL sMPC algorithm]() have a safety threshold of 1/3rd+. This means that one adversary must successfully attack 1/3rd (or more) of the Darknodes in a [shard]() before it is possible to break the safety properties of that shard.
+​Both the [Tendermint consensus algorithm](https://arxiv.org/abs/1807.04938) and the [RZL sMPC algorithm]() have a safety threshold of 1/3rd+. This means that one adversary must successfully attack 1/3rd (or more) of the Darknodes in a [shard](https://github.com/renproject/ren/wiki/Sharding) before it is possible to break the safety properties of that shard.
 
 Shards must never:
 
@@ -32,7 +32,7 @@ Either way, the attacker must spend 1/3rd+ of the value of REN bonded in a shard
 
 We define `R` to be the total value of REN bonded in a shard. In the **bribery attack**, an attacker must bribe 1/3rd+ of Darknode owners by offering them a reward. It follows from assumption (5) and (6) that the attacker must spend more than `R/3` on rewards. Therefore, we can prevent such an attack by restricting the total value of locked assets, `L`, to be less than `R/3`.
 
-​In the **bonding attack**, an attacker must register enough Darknodes that they can be randomly selected to own 1/3rds+ of the Darknodes in the shard. It turns out that this is more expensive than a bribery attack, and so making the bribery attack unprofitable is sufficient to make the bonding attack unprofitable.  Intuitively, this is because the bonding attack requires more than `R/3` worth of bond from the attacker; they must corrupt a portion of a network that is much larger than one shard (see [Bribery vs Bonding](https://github.com/renproject/ren/wiki/Safety-and-Liveliness#Bribery-vs-Bonding)).
+​In the **bonding attack**, an attacker must register enough Darknodes that they can be randomly selected to own 1/3rds+ of the Darknodes in the shard. It turns out that this is more expensive than a bribery attack, and so making the bribery attack unprofitable is sufficient to make the bonding attack unprofitable.  Intuitively, this is because the bonding attack requires more than `R/3` worth of bond from the attacker; they must corrupt a portion of a network that is much larger than one shard (see [Bribery vs Bonding](https://github.com/renproject/ren/wiki/Safety-and-Liveliness#Bribery-and-Bonding-Attacks)).
 
 ## Fees
 

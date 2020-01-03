@@ -20,7 +20,7 @@ For information about the design of other gateways, checkout:
 
 Interoperability between Bitcoin and Ethereum is realised through a tokenised ERC20 representation of BTC, known as **renBTC** (it is called zBTC on Testnet/Chaosnet for easy differentiation). When someone transfers BTC to RenVM it is considered locked, and RenVM will mint the respective amount of renBTC to the specified Ethereum address. Similarly, when someone burns renBTC, RenVM will release the respective amount of BTC by transferring it to the specified Bitcoin address. This is known as locking/releasing and minting/burning.
 
-This is implemented in a permissionless, trustless, and decentralised way by using the RZL sMPC algorithm to generate, operate, and rotate ECDSA private keys (see [Execution]()) in secret. These ECDSA private keys are used to receive BTC, transfer BTC, and authorise the minting of renBTC. The RZL sMPC algorithm guarantees that the ECDSA private keys are never seen by anyone, and cannot be used without consensus from the network. This is why gateways are considered to be “secret contracts”. Unless someone can attack 1/3rd+ of the Darknodes, the safety and liveliness guarantees of RenVM cannot be broken. See [Execution]() for more information about RZL sMPC.
+This is implemented in a permissionless, trustless, and decentralised way by using the RZL sMPC algorithm to generate, operate, and rotate ECDSA private keys in secret. These ECDSA private keys are used to receive BTC, transfer BTC, and authorise the minting of renBTC. The RZL sMPC algorithm guarantees that the ECDSA private keys are never seen by anyone, and cannot be used without consensus from the network. This is why gateways are considered to be “secret contracts”. Unless someone can attack 1/3rd+ of the Darknodes, the safety and liveliness guarantees of RenVM cannot be broken. See [Execution](https://github.com/renproject/ren/wiki/Execution) for more information about RZL sMPC.
 
 In this way, you can think of RenVM as a permissionless, trustless, and decentralised BTC custodian that maintains a fungible 1:1 backed ERC20 representation of BTC.​
 
@@ -38,9 +38,7 @@ In this way, you can think of RenVM as a permissionless, trustless, and decentra
 
 ## Locking and Minting BTC
 
-Locking and minting is the process by which users can send BTC from the Bitcoin blockchain to the Ethereum blockchain. See [Gateway Safety and Fees]() for more information about the fees that must be paid to RenVM.​
-
-First, the user must generate a valid gateway script. The user can then transfer BTC to the gateway script, wait for 6 confirmations, and then call `ren_submitTx` on one (or many) of the Darknodes. This notifies them about the existence of the gateway script, and the UTXO that transfers BTC to it.
+Locking and minting is the process by which users can send BTC from the Bitcoin blockchain to the Ethereum blockchain. First, the user must generate a valid gateway script. The user can then transfer BTC to the gateway script, wait for 6 confirmations, and then call `ren_submitTx` on one (or many) of the Darknodes. This notifies them about the existence of the gateway script, and the UTXO that transfers BTC to it.
 
 A valid gateway script must be built from the following template:
 
@@ -84,21 +82,21 @@ See [RPCs]() for a complete description of the JSON-RPC 2.0 API and [Transaction
 
 ## Burning and Releasing BTC
 
-At any point, users can burn an arbitrary amount of renBTC. At the same time, they must specify a Bitcoin address. The Darknodes powering RenVM will eventually observe this burn event on Ethereum, and after 12 confirmations will create a RenVM transaction to release the respective amount of BTC to the specified Bitcoin address. See [Gateway Safety and Fees]() for more information about the fees that must be paid to RenVM.
+At any point, users can burn an arbitrary amount of renBTC. At the same time, they must specify a Bitcoin address. The Darknodes powering RenVM will eventually observe this burn event on Ethereum, and after 12 confirmations will create a RenVM transaction to release the respective amount of BTC to the specified Bitcoin address.
 
 The user does not need to take any action other than burning renBTC and specifying their Bitcoin address. RenVM will automatically see the burn event, generate a signed Bitcoin transaction to release BTC to the specified Bitcoin address, and submit the Bitcoin transaction.​
 
-RenVM engages its [consensus algorithm]() to agree on the order in which to process burns, the UTXOs to use when building the Bitcoin transaction, and the amount of SATs to use for the Bitcoin transaction fees. To optimise these fees, RenVM batches multiple burns into a single Bitcoin transaction with multiple outputs. Any left over BTC is refunded to the gateway public key. RenVM will favour using UTXOs in gateway scripts over UTXOs in the gateway public key.
+RenVM engages its [consensus algorithm](https://github.com/renproject/ren/wiki/Consensus) to agree on the order in which to process burns, the UTXOs to use when building the Bitcoin transaction, and the amount of SATs to use for the Bitcoin transaction fees. To optimise these fees, RenVM batches multiple burns into a single Bitcoin transaction with multiple outputs. Any left over BTC is refunded to the gateway public key. RenVM will favour using UTXOs in gateway scripts over UTXOs in the gateway public key.
 
 See the [GatewayJS documentation]() for examples of how to burn renBTC using JavaScript.
 
 ## Epochs
 
-At the end of every epoch, the gateway private keys must be rotated. Darknodes eventually become inactive and deregister withdraw their bond (at epoch periodicity. It is required for safety that no deregistered Darknode has a Shamir’s secret shares for an active gateway private key. By rotating the key at the end of every epoch, rotation aligns exactly with the (de)registration of Darknodes (see [Darknode Registry]()), and changing which Darknodes are responsible for shards (see [Sharding]()).
+At the end of every epoch, the gateway private keys must be rotated. Darknodes eventually become inactive and deregister withdraw their bond (at epoch periodicity. It is required for safety that no deregistered Darknode has a Shamir’s secret shares for an active gateway private key. By rotating the key at the end of every epoch, rotation aligns exactly with the (de)registration of Darknodes (see [Darknode Registry](https://github.com/renproject/ren/wiki/Darknode-Registry)), and changing which Darknodes are responsible for shards (see [Sharding](https://github.com/renproject/ren/wiki/Sharding)).
 
 The Darknodes responsible for the shard at epoch `E` will generate a new ECDSA private key using the RZL sMPC algorithm (no Darknodes ever see the private key). This is done is such a way that the new ECDSA public key is known, but the respective Shamir’s secret shares are encrypted for the Darknodes at epoch `E+1`. The Darknodes at `E` combine all UTXOs into a single transaction that forwards all BTC to the newly generated ECDSA public key.
 
-The ECDSA public key and encrypted Shamir’s secret shares are stored as state in the base block (see [Consensus]()). The Darknodes at epoch `E+1` get the public key and their respective share of the private key from the base block, and the rotation is finished. For the duration of epoch `E+1`, the Darknodes at epoch `E` will continue to support gateway scripts built at epoch `E`, and will transform all relevant RenVM transactions for `E+1`.
+The ECDSA public key and encrypted Shamir’s secret shares are stored as state in the base block (see [Consensus](https://github.com/renproject/ren/wiki/Consensus)). The Darknodes at epoch `E+1` get the public key and their respective share of the private key from the base block, and the rotation is finished. For the duration of epoch `E+1`, the Darknodes at epoch `E` will continue to support gateway scripts built at epoch `E`, and will transform all relevant RenVM transactions for `E+1`.
 
 ## Fees
 ​
@@ -106,7 +104,7 @@ The ECDSA public key and encrypted Shamir’s secret shares are stored as state 
 
 > Note: Minting curves have not been deployed yet. Currently, burning fees are set to a static 0.1%.
 
-Minting fees are taken when renBTC is minted on Ethereum. It is taken by minting a percentage of the renBTC to the [Darknode Payments]() smart contract instead of the `to` address. The minting fee has two purposes:
+Minting fees are taken when renBTC is minted on Ethereum. It is taken by minting a percentage of the renBTC to the [Darknode Payments](https://github.com/renproject/ren/wiki/Darknode-Payments) smart contract instead of the `to` address. The minting fee has two purposes:
 
 1. to compensate the Darknode for the work required to produce signatures (preventing someone from spamming RenVM with work that results in no revenue), and
 2. to help enforce `L < R/3`, where `L` is the total value of BTC locked, and `R` is the total value of REN bonded in the `BTCEthereum` shard. It helps by dampening the minting of renBTC as `L` approached `R/3` (see [Safety and Liveliness]()).
@@ -121,10 +119,10 @@ This curve enforces a minimum minting fee, `k`, that approaches 100% as `L` appr
 
 > Note: Burning curves have not been deployed yet. Currently, burning fees are set to a static 0.1%.
 
-Burning fees are taken when renBTC is burned from Ethereum. It is taken by not burning a percentage of the renBTC, and instead transferring it to the [Darknode Payments]() smart contract. The burning fee has two purposes:
+Burning fees are taken when renBTC is burned from Ethereum. It is taken by not burning a percentage of the renBTC, and instead transferring it to the [Darknode Payments](https://github.com/renproject/ren/wiki/Darknode-Payments) smart contract. The burning fee has two purposes:
 
 1. to compensate the Darknode for the work required to produce signatures (preventing someone from spamming RenVM with work that results in no revenue), and
-2. to help enforce `L < R/3`, by incentivising users to burn renBTC as `L` approaches `R/3` (see [Safety and Liveliness]()).
+2. to help enforce `L < R/3`, by incentivising users to burn renBTC as `L` approaches `R/3` (see [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness)).
 
 Burning fees are defined by the curve `fee(k, a, x) = k/(x+1)^a` where `k=0.0001`, `a=2`, and `x=3L/R`:
 
