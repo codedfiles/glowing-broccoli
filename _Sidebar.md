@@ -2,10 +2,10 @@
 
 1. [Introduction](https://github.com/renproject/ren/wiki/Introduction)
 2. [Interoperability](https://github.com/renproject/ren/wiki/Interoperability)
-3. [Privacy (!)](https://github.com/renproject/ren/wiki/Privacy)
+3. [Privacy (Coming Soon)](https://github.com/renproject/ren/wiki/Privacy)
 4. [Consensus (WIP)](https://github.com/renproject/ren/wiki/Consensus)
 5. [Execution (WIP)](https://github.com/renproject/ren/wiki/Execution)
-5. [Sharding (!)](https://github.com/renproject/ren/wiki/Sharding)
+5. [Sharding (Coming Soon)](https://github.com/renproject/ren/wiki/Sharding)
 7. [Gateways](https://github.com/renproject/ren/wiki/Gateways)
 8. [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness)
 9. [Supported Blockchains](https://github.com/renproject/ren/wiki/Supported-Blockchains)
