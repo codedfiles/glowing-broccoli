@@ -1,6 +1,4 @@
-Interoperability is a broad term that encompasses many different kinds of interactions between blockchains. Most of the commonly used definitions are quite reasonable, but they are often for very specific use cases, and they all have different safety/liveliness trade-offs. We will discuss some of the biggest forms of "interoperability" and 
-
-For the purposes of discussion, we define interoperability as such:
+Interoperability is a broad term that encompasses many different kinds of interactions between blockchains. Most of the commonly used definitions are quite reasonable, but they are often for very specific use cases, and they all have different safety/liveliness trade-offs. In this section, we will discuss some of the most common forms of interoperability. For the purposes of discussion, we define interoperability as such:
 
 > Interoperability is the ability to move digital assets, and data, from one blockchain to another.
 
