@@ -104,25 +104,41 @@ The ECDSA public key and encrypted Shamir’s secret shares are stored as state 
 ​
 ### Minting Fee
 
-There is a minting fee, `fee_m`, that is initially set to 0%. This fee is sent to the [Darknode Payments]() smart contract during the minting transaction. It is initially set to 0% to encourage the locking/minting of renBTC. The minting fee increases as the total value of locked BTC increases (see [Gateway Safety and Fees]()).
+Minting fees are taken when renBTC is minted on Ethereum. It is taken by minting a percentage of the renBTC to the [Darknode Payments]() smart contract instead of the `to` address. The minting fee has two purposes:
+
+1. to compensate the Darknode for the work required to produce signatures (preventing someone from spamming RenVM with work that results in no revenue), and
+2. to help enforce `L < R/3`, where `L` is the total value of BTC locked, and `R` is the total value of REN bonded in the `BTCEthereum` shard. It helps by dampening the minting of renBTC as `L` approached `R/3` (see [Safety and Liveliness]()).
+
+Minting fees are defined by the curve `fee(k, a, x) = k^(1-x^2)` where `k=0.0001`, `a=2`, and `x=3L/R`:
+
+![Minting Curve](./assets/minting-curve.png)
+
+This curve enforces a minimum minting fee, `k`, that approaches 100% as `L` approaches `R/3`. By letting the minting fee approach 100%, it is impossible to exceed `L>=R/3` by locking/minting BTC. The curve — and its parameters — are subject to governance, allowing RenVM to respond to changing market conditions and user behaviour. See [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness) for more information about how fees relate to the safety of RenVM.
 
 ### Burning Fee
 
-There is a burning fee, `fee_b`, initially set to 0.1%. This fee is sent to the [Darknode Payments]() smart contract during the burning transaction. It is applied in addition to the underlying Bitcoin transaction fee. The burning fee decreases as the total value of locked BTC increases (see [Gateway Safety and Fees]()).
+Burning fees are taken when renBTC is burned from Ethereum. It is taken by not burning a percentage of the renBTC, and instead transferring it to the [Darknode Payments]() smart contract. The burning fee has two purposes:
+
+1. to compensate the Darknode for the work required to produce signatures (preventing someone from spamming RenVM with work that results in no revenue), and
+2. to help enforce `L < R/3`, by incentivising users to burn renBTC as `L` approaches `R/3` (see [Safety and Liveliness]()).
+
+Burning fees are defined by the curve `fee(k, a, x) = k/(x+1)^a` where `k=0.0001`, `a=2`, and `x=3L/R`:
+
+![Burning Curve](./assets/burning-curve.png)
+
+This curve enforces a maximum and minimum burning fee that approaches 0% as `L` approaches `R/3`. This makes it gradually cheaper for users to burn renBTC as the maximum limit is reached. The curve — and its parameters — are subject to governance, allowing RenVM to respond to changing market conditions and user behaviour. See [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness) for more information about how fees relate to the safety of RenVM.
 
 ### Continuous Fees
 
-There is a continuous fee, `fee_c`, initially set to approximately 1% per annum, at a compounding rate of 0.000000031639% per second (see [Gateway Safety and Fees]()).​
+Minting and burning fees both help enforce the constraint `L <= R/3`. However, it is very likely that users will mint renBTC and keep it on Ethereum for extended periods of time (e.g. when lending or collateralising). This presents a challenge to RenVM, since no minting/burning fees are earned during this period.
+
+The solution to this problem is the introduction of continuous fee, compounding by the second. Initially, this fee is set to 0.000000031639% per second, which results in approximately 1% per annum. This fee is subject to governance, but it may be automated in the future. Its purpose is to enforce `L <= R/3`; the value of `R/3` should be dependent on `L` and the time-continuous fee. If `R/3` drops too much, then the continuous fee can be raised in response (and/or the burning fee can be lowered). If `L` drops too much, then the continuous fee can be lowered (and/or the minting fee can be lowered).
 
 Continuous fees are implemented by slowly inflating the ratio, `r`, between BTC and renBTC. At time `t`, locking `n` BTC will result in the minting of `n * r` renBTC, where `r = base + (1+fee_c)^ t`. When `fee_c` is changed, `base` is set to the current value of `r` (which is initially set to zero). Similarly, at time `t` burning `m` renBTC will result in the releasing of `m/r` BTC.
 
-Two ERC20 interfaces will exist for renBTC: absolute and relative. The **absolute** ERC20 interface, commonly referred to as renBTC, accepts/returns the “true” balances (that is, without adjustments for continuous fees). From one moment to the next, unless transfers happens, balances do not change with time. This should be unsurprising, and is exactly how most ERC20s are implemented. The **relative** ERC20 interface accepts/returns values in BTC. It uses the same underlying balances as renBTC, but modifies them to account for continuous fees. This is useful in UIs.
+Two ERC20 interfaces will exist for renBTC: absolute and relative. The **absolute** ERC20 interface accepts/returns the “true” balances (that is, without adjustments for continuous fees). From one moment to the next, unless transfers happens, balances do not change over time. This should be unsurprising, and is exactly how most ERC20s are implemented.
 
-### Governance
-
-​All fees are subject to governance. This allows them to be set in response to market conditions. For example, eventually having a 0% minting fee to encourage the minting of renBTC will no longer be necessary. It is also desirable to have the continuous fee at a rate that is (a) competitive compared to other custodians and (b) less than the interest that can be earned on lending platforms.
-
-During Mainnet SubZero/Zero, governances will be controlled by the Ren team. By Mainnet One, governances will he controlled by the Darknodes, using an Ethereum smart contract to vote.
+The **relative** ERC20 interface accepts/returns values in BTC (that is, with adjustments for continuous fees). It is just a wrapper around the absolute interface, that makes adjustments for the continuous fee before sending/returning values to/from the absolute interface. This is mostly useful in UIs where the users want to see concrete BTC values.
 
 ## Example
 
