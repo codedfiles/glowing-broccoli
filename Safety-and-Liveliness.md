@@ -34,13 +34,23 @@ We define `R` to be the total value of REN bonded in a shard. In the **bribery a
 
 ​In the **bonding attack**, an attacker must register enough Darknodes that they can be randomly selected to own 1/3rds+ of the Darknodes in the shard. It turns out that this is more expensive than a bribery attack, and so making the bribery attack unprofitable is sufficient to make the bonding attack unprofitable.  Intuitively, this is because the bonding attack requires more than `R/3` worth of bond from the attacker; they must corrupt a portion of a network that is much larger than one shard (see [Bribery vs Bonding](https://github.com/renproject/ren/wiki/Safety-and-Liveliness#Bribery-and-Bonding-Attacks)).
 
-## Fees
+### Fees
 
 Previously, we stated that we must restrict `L <= R/3`. This could be done using some kind of liquidation mechanism, however, this ultimately degrades the tokenised assets into a synthetic. When liquidation is involved, you cannot always get origin assets back in exchange for your tokenised assets. Instead, you get back an unrelated asset that is equal in value, assuming that the market is sufficiently liquid.
 
 Instead of liquidiation, RenVM does this by allowing governance over dynamic minting/burning/continuous fees. As `L` approaches `R/3`, the minting fee approaches `+inf`. On the other hand, the burning fee approaches `+0`. Because there is a continuous fee compounding by the second, users become incentivised to burn tokenised assets, lowering the value of `L`. By tuning minting/burning fees, RenVM can enforce that `L` does not exceed `R/3` from below.
 
 RenVM must also enforce that `R/3` does not drop below `L` from above. This can be done by tuning the continuous fee. The value of `R` is dependent on `L` and the continuous fee (it is also dependent on the minting/burning fees, but this can only cause the value of `R` to increase). If `R` is too low, and there is a risk of `R/3 < L`, then RenVM governance can increase the continuous fee until (a) people burn tokenised assets to avoid the fee (reducing `L`), (b) the value of `R` increases, or both.
+
+### Semi-decentralised Core
+
+During Mainnet SubZero and Mainnet Zero, there will be a semi-decentralised core of Darknodes run by the Ren team and other projects that are stakeholders in Ren:
+
+- In **Mainnet SubZero**, this core will be responsible for consensus and execution. All other Darknodes will be responsible for maintaining the P2P network.
+- In **Mainnet Zero**, this core will be responsible for execution. All other Darknodes will be responsible for maintaining the P2P network and consensus.
+- In **Mainnet One**, this core will be retired and all functionality will be run by all Darknodes.
+
+This is a bootstrapping mechanism to ensure the stability and security of the system as it is adopted. This core will be run by multiple independent and reputable projects in the blockchain ecosystem. These projects will be stakeholders in Ren that are externally incentivised to run Darknodes even if the system is not currently profitable. This helps to (a) ensure that Darknodes are running even when there are not enough fees to naturally incentivise members of the general public, and (b) ensure that the system is safe/lively even if `L > R/3` as the system matures to an equilibrium.
 
 ### Bribing and Bonding Attacks
 
