@@ -104,3 +104,9 @@ This argument also applies to "hacking", where an attacker may try to forcefully
 ### Capital Requirements
 
 Even when an irrational adversary does not care about making profit, they are still required to either launch a Sybil or bribery attack to steal assets from RenVM. Such an attack requires a minimum capital spend: 1/3rd the sum value of REN bonds in a shard. RenVM protects against these attacks by controlling (a) the fees earned by Darknodes, (b) the number of Darknodes in a shard, and (c) the minimum REN bond per Darknode. Under *Assumption (5)*, there exists such a set of parameters that the minimum capital requirement for an irrational attack is too high. For example, at a market price of 0.05 USD per REN, a shard size of 256, and a minimum REN bond of 100000 REN, an irrational attacker would have to have access to 425000 USD before being able to attempt an unprofitable attack. It will ultimately be up to the Darknodes to reach an agreement on parameters that are acceptable by them and their users.
+
+## Summary
+
+RenVM makes use of a modified version of the Tendermint consensus algorithm to guarantee the consensus mechanism cannot be be made unsafe (or halted), unless 1/3rd or more of the Darknodes are adversarial and coordinating (or offline). The same guarantees are made for execution by making use of the novel RZL MPC algorithm.
+
+To incentivise Darknodes to be non-adversarial, RenVM has a series of slashing conditions that will slash the bonds of malicious Darknodes. These slashing conditions, coupled with economic policies to adjust fees earnt, ensure that it is not profitable to attempt an attack against RenVM. Furthermore, an irrational attacker that is happy to make a loss would still need to have access to a large amount of initial capital as well as a way to collude with large numbers of unknown Darknodes in a short period of time.
