@@ -4,6 +4,8 @@
 
 RenVM assumes that Darknodes are rational, and will attempt to maximise their own profit. As such, that there must be an economic incentive for the Darknodes to power RenVM, because contributing CPU cycles, disk space, and network bandwidth has a non-zero cost. Furthermore, the Darknodes are required to bond 100000 REN, which has a non-zero opportunity cost.
 
+The economic model of RenVM is designed to create a positive feedback loop, where increased use increases capacity (i.e. scalability). This allows RenVM to be capital efficient, while avoid the need for liquidation mechanisms, and is one of its biggest advantages over other possible designs.
+
 ## Definitions
 
 - The *minting fee* is a percentage fee charged when minting an asset to a host chain.
