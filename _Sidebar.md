@@ -9,7 +9,7 @@
 6. [Greycore](https://github.com/renproject/ren/wiki/Greycore)
 7. [Gateways](https://github.com/renproject/ren/wiki/Gateways)
 8. [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness)
-9. [Fees and Economics] (https://github.com/renproject/ren/wiki/Fees-and-Economics)
+9. [Fees and Economics](https://github.com/renproject/ren/wiki/Fees-and-Economics)
 10. [Supported Blockchains](https://github.com/renproject/ren/wiki/Supported-Blockchains)
 11. [REN (!)](https://github.com/renproject/ren/wiki/REN)
 12. [Darknode Registry (!)](https://github.com/renproject/ren/wiki/Darknode-Registry)
