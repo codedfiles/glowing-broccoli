@@ -122,8 +122,6 @@ As you can see, only one transaction — the initial bitcoin transaction in the 
 
 Unsurprisingly, we call such transactions burn-and-release transactions, because the host chain “burns” the pegged assets, and after witnessing the burn, RenVM “releases” the same amount of assets on the origin chain. The burn event specifies the receiving address, which can allow for some interesting compositions of transaction that we will explore later.
 
-We will continue with Alice, and explore how to redeem BTC when you have renBTC.
-
 ![Burn and release](./assets/burn-and-release.png)
 
 1. Alice (or a smart contract) burns 0.2 renBTC on Ethereum, specifying her Bitcoin address at the same time.
