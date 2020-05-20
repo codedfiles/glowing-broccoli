@@ -22,7 +22,7 @@ RenVM is a decentralised crypto asset custodian that:
 - **enables universal interoperability between blockchains:** anyone can use RenVM to send any asset to any application on any chain in any quantity.
 - **has robust security:** large bonds, large shard sizes, and continuous shuffling make RenVM extremely difficult to attack, even for irrational adversaries. In the unlikely event of a successful attack, RenVM can restore lost funds.
 - **is scalable:** as more assets are locked into the custody of RenVM, the algorithmic adjustment of fees allows RenVM to automatically scale its capacity to meet demand.
-- **provides an optimal user experience:** users can interact with multiple assets, applications, and chains with only **one transaction**.
+- **provides an optimal user experience:** users can interact with multiple assets, applications, and chains with only one transaction.
 
 ## Introduction
 
