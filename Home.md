@@ -106,7 +106,7 @@ Lock-and-mint transactions are so named because the first step requires the user
 
 For example, Alice can lock BTC into RenVM, and then mint the same amount of renBTC on Ethereum. She can also attach arbitrary application-specific data, but we will talk about this in more detail later.
 
-![Lock and Mint](./assets/lock-and-mint.png)
+![Lock and mint](./assets/lock-and-mint.png)
 
 1. Alice makes a Bitcoin transaction that locks 0.55 BTC  into the custody of RenVM.
 2. Alice (or the application) notifies RenVM about this transaction.
@@ -124,7 +124,7 @@ Unsurprisingly, we call such transactions burn-and-release transactions, because
 
 We will continue with Alice, and explore how to redeem BTC when you have renBTC.
 
-![Burn and Release](./assets/burn-and-release.png)
+![Burn and release](./assets/burn-and-release.png)
 
 1. Alice (or a smart contract) burns 0.2 renBTC on Ethereum, specifying her Bitcoin address at the same time.
 2. RenVM witnesses the burn event and waits for the required number of confirmations. RenVM does not need to be notified; it will see the burn event by itself.
@@ -138,7 +138,7 @@ Using only lock-and-mint and burn-and-release transactions, we can compose inter
 
 To better support this kind of transaction flow, RenVM supports *burn-and-mint transactions*, which allow this behaviour in a more direct fashion. Using burn-and-mint transactions, users and smart contracts can “burn” pegged assets from one host chain and “mint” the same amount of pegged assets on another host chain without ever touching the origin chain. For example, sending BTC from Ethereum to Polkadot can be done using a burn-and-mint transaction.
 
-![Burn and Mint](./assets/burn-and-mint.png)
+![Burn and mint](./assets/burn-and-mint.png)
 
 1. Alice burns 0.34 renBTC on Ethereum, specifying that she wants to send it to her address on Polkadot.
 2. RenVM witnessed the burn event and waits for the required number of confirmations. RenVM does not need to be notified; it will see the burn event by itself.
