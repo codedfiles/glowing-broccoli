@@ -1,5 +1,6 @@
 In this Wiki, we present RenVM, a [Byzantine fault tolerant](https://en.wikipedia.org/wiki/Byzantine_fault) (BFT) network that enables universal interoperability between blockchains. By combining consensus with [secure multi-party computation](https://en.wikipedia.org/wiki/Secure_multi-party_computation) (MPC) algorithms, RenVM is able to instantiate a decentralised, permission-less, and trust-less custodian capable of locking assets on one chain, and minting one-to-one pegged representations of them on other chains. In this way, users are able to interact with multiple applications, multiple assets, and multiple chains with only one transaction. Throughout this wiki, we will explore how RenVM is able to achieve this, using BTC-on-Ethereum as a particularly interesting case study.
 
+0. [Too Long; Didn't Read](#tldr)
 1. [Introduction](#introduction)
     1. [Universal Interoperability](#universal-interoperability)
     2. [Related Work](#related-work)
@@ -14,6 +15,14 @@ In this Wiki, we present RenVM, a [Byzantine fault tolerant](https://en.wikipedi
     3. [Burn and Mint](#burn-and-mint)
 4. [Community](#community)
 
+## TL;DR
+
+RenVM is a decentralised crypto asset custodian that:
+
+- **enables universal interoperability between blockchains:** anyone can use RenVM to send any asset to any application on any chain in any quantity.
+- **has robust security:** large bonds, large shard sizes, and continuous shuffling make RenVM extremely difficult to attack, even for irrational adversaries. In the unlikely event of a successful attack, RenVM can restore lost funds.
+- **is scalable:** as more assets are locked into the custody of RenVM, the algorithmic adjustment of fees allows RenVM to automatically scale its capacity to meet demand.
+- **provides an optimal user experience:** users can interact with multiple assets, applications, and chains with only **one transaction**.
 
 ## Introduction
 
