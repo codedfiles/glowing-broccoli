@@ -12,6 +12,7 @@ In this Wiki, we present RenVM, a Byzantine fault tolerant network that enables 
     1. [Lock and Mint](#lock-and-mint)
     2. [Burn and Release](#burn-and-release)
     3. [Burn and Mint](#burn-and-mint)
+4. [Community](#community)
 
 
 ## Introduction
@@ -139,3 +140,12 @@ To better support this kind of transaction flow, RenVM supports *burn-and-mint t
 2. RenVM witnessed the burn event and waits for the required number of confirmations. RenVM does not need to be notified; it will see the burn event by itself.
 3. RenVM uses the RZL MPC algorithm to produce and return a minting signature to Alice.
 4. Alice submits the minting signature to Polkadot and mints 0.33932034 renBTC (0.34 renBTC - fees).
+
+## Community
+
+Ask questions, give us feedback, and learn more about the project:
+
+- [GitHub](https://github.com/renproject/ren/issues)
+- [Telegram](https://t.me/renproject)
+- [Twitter](https://twitter.com/renprotocol)
+- [Reddit](https://reddit.com/r/RenProject)
