@@ -35,6 +35,8 @@ We define *universal interoperability* as the ability to send any asset from any
 
 There have been many attempts to achieve various forms of interoperability between blockchains, most of which have focused on interactions between Bitcoin and Ethereum. In this section, we will discuss some of the existing solutions that have been proposed, and look at their main disadvantages.
 
+![Atomic swaps](./assets/atomic-swaps.png)
+
 *Atomic swaps* — or, as they are sometimes miscalled, HTLCs — use special Bitcoin scripts and Ethereum contracts to guarantee that BTC is swapped for ETH/ERC20s in full, or not at all. Consider Alice trying to swap BTC for ETH with Bob. Alice will not get custody of the ETH, unless Bob is able to get custody of the BTC, and vice versus. Although atomic swaps have many desirable properties, they have two major drawbacks:
 
 1. They are not universally applicable. Atomic swaps are only usable for swapping, and Alice and Bob must already agree on the assets and the price-point. This makes them very limited in where they can be used. We cannot use atomic swaps to create cross-chain collateralised derivatives, automated market-makers, etc. and so other solutions are needed. This problem is particularly apparent when we realise that we want to support applications that may not even exist today, and so we need solutions that are as general as possible.
@@ -45,6 +47,8 @@ There have been many attempts to achieve various forms of interoperability betwe
 1. Synthetics are not redeemable for the underlying asset, they are only pegged to be approximately the same price. If you have synthetic BTC, but you now want real BTC, you need to find a counter-party that is willing to make that trade with you.
 2. Synthetics cannot interact with other chains. A synthetic that has been minted on one chain can only interact with contracts and assets on that chain, unless it is combined with a different interoperability solution. For example, Dai cannot be moved from Ethereum unless it does so on the back of an interoperability solution like RenVM.
 3. Liquidation mechanisms have been known to fail during times of high market volatility. This is problematic, because times of high market volatility are exactly the times when you want your assets to be the most stable/usable. Mass liquidations and rapid price movements can result in synthetic assets that are under-collateralised, and this unpegs their price.
+
+![Tokenised representation](./assets/tokenised-representation.png)
 
 Lastly, we will look at *tokenised representation*. Tokenised representations are the most flexible kind of interoperability, and can be implemented in many different ways. For example, there is WBTC, imBTC, TBTC, and pBTC. Tokenised representation is where the user locks up an asset with a custodian, and the custodian mints a one-to-one backed token for the user on another chain. This token can then be burned, and the custodian releases the respective amount of the locked asset back to the user. While flexible, all of the existing tokenised representation models exhibit serious problems for universal interoperability:
 
@@ -102,7 +106,7 @@ Lock-and-mint transactions are so named because the first step requires the user
 
 For example, Alice can lock BTC into RenVM, and then mint the same amount of renBTC on Ethereum. She can also attach arbitrary application-specific data, but we will talk about this in more detail later.
 
-![Lock and Mint](./assets/lock-and-mint.jpg)
+![Lock and Mint](./assets/lock-and-mint.png)
 
 1. Alice makes a Bitcoin transaction that locks 0.55 BTC  into the custody of RenVM.
 2. Alice (or the application) notifies RenVM about this transaction.
@@ -120,7 +124,7 @@ Unsurprisingly, we call such transactions burn-and-release transactions, because
 
 We will continue with Alice, and explore how to redeem BTC when you have renBTC.
 
-![Burn and Release](./assets/burn-and-release.jpg)
+![Burn and Release](./assets/burn-and-release.png)
 
 1. Alice (or a smart contract) burns 0.2 renBTC on Ethereum, specifying her Bitcoin address at the same time.
 2. RenVM witnesses the burn event and waits for the required number of confirmations. RenVM does not need to be notified; it will see the burn event by itself.
@@ -134,7 +138,7 @@ Using only lock-and-mint and burn-and-release transactions, we can compose inter
 
 To better support this kind of transaction flow, RenVM supports *burn-and-mint transactions*, which allow this behaviour in a more direct fashion. Using burn-and-mint transactions, users and smart contracts can “burn” pegged assets from one host chain and “mint” the same amount of pegged assets on another host chain without ever touching the origin chain. For example, sending BTC from Ethereum to Polkadot can be done using a burn-and-mint transaction.
 
-![Burn and Mint](./assets/burn-and-mint.jpg)
+![Burn and Mint](./assets/burn-and-mint.png)
 
 1. Alice burns 0.34 renBTC on Ethereum, specifying that she wants to send it to her address on Polkadot.
 2. RenVM witnessed the burn event and waits for the required number of confirmations. RenVM does not need to be notified; it will see the burn event by itself.
