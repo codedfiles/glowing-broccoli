@@ -147,10 +147,20 @@ Users are also able to independently assess these constraints, and arrive at the
 
 ## Fee Curves
 
+[minting_plot]: ./fee_plots/output/minting.png
+[burning_plot]: ./fee_plots/output/burning.png
+[continuous_plot]: ./fee_plots/output/continuous.png
+
 These fee curves are an initial attempt at defining the minting, burning, and continuous fees with respect to the `B/L` where `L` is the locked value and `B` is the bonded value. These curves are subject to change based on the results observed during Phase SubZero. During Phase Zero (and beyond), RenVM governance will have the ability to modify these curves.
 
 ### Minting Fee Curve
 
+![][minting_plot]
+
 ### Burning Fee Curve
 
+![][burning_plot]
+
 ### Continuous Fee Curve
+
+![][continuous_plot]
