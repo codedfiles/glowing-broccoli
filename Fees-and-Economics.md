@@ -155,12 +155,12 @@ These fee curves are an initial attempt at defining the minting, burning, and co
 
 ### Minting Fee Curve
 
-![][minting_plot]
+![Minting Fee Curve][minting_plot]
 
 ### Burning Fee Curve
 
-![][burning_plot]
+![Burning Fee Curve][burning_plot]
 
 ### Continuous Fee Curve
 
-![][continuous_plot]
+![Continuous Fee Curve][continuous_plot]
