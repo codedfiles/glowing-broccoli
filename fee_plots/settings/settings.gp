@@ -12,3 +12,5 @@ set rrange [ * : * ] noreverse writeback
 
 set xlabel "L/B"
 set ylabel "Fee (%)"
+
+set xtics ('0' 0, '1/3' 1.0/3.0, '2/3' 2.0/3.0, '1' 1)

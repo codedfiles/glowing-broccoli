@@ -3,3 +3,6 @@
 
 all: *.gp
 	gnuplot $?
+
+clean:
+	rm output/*
