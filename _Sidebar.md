@@ -15,6 +15,7 @@
 12. [Darknode Registry (!)](https://github.com/renproject/ren/wiki/Darknode-Registry)
 13. [Darknode Payments (!)](https://github.com/renproject/ren/wiki/Darknode-Payments)
 14. [Darknode Slasher (!)](https://github.com/renproject/ren/wiki/Darknode-Slasher)
+15. [Audits](./Audits)
 
 ## API
 
