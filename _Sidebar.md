@@ -1,8 +1,6 @@
 ## Specification
 
 1. [Introduction](https://github.com/renproject/ren/wiki/Introduction)
-2. [Interoperability](https://github.com/renproject/ren/wiki/Interoperability)
-3. [Privacy (!)](https://github.com/renproject/ren/wiki/Privacy)
 4. [Consensus (WIP)](https://github.com/renproject/ren/wiki/Consensus)
 5. [Execution (WIP)](https://github.com/renproject/ren/wiki/Execution)
 5. [Sharding](https://github.com/renproject/ren/wiki/Sharding)
