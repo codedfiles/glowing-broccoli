@@ -1,1 +1,1 @@
-> Work in progrss! For more information about execution, see [z0](https://github.com/renproject/z0).
+> Work in progrss! For more information about execution, see the [RZL MPC specification](https://github.com/renproject/rzl-mpc-specification).
