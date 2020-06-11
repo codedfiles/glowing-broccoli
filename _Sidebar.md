@@ -1,6 +1,6 @@
 ## Specification
 
-1. [Introduction](https://github.com/renproject/ren/wiki/Introduction)
+1. [Introduction](https://github.com/renproject/ren/wiki)
 4. [Consensus (WIP)](https://github.com/renproject/ren/wiki/Consensus)
 5. [Execution (WIP)](https://github.com/renproject/ren/wiki/Execution)
 5. [Sharding](https://github.com/renproject/ren/wiki/Sharding)
