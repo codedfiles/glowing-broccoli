@@ -10,9 +10,7 @@
 9. [Fees and Economics](https://github.com/renproject/ren/wiki/Fees-and-Economics)
 10. [Supported Blockchains](https://github.com/renproject/ren/wiki/Supported-Blockchains)
 11. [REN](https://github.com/renproject/ren/wiki/REN)
-12. [Darknode Registry (!)](https://github.com/renproject/ren/wiki/Darknode-Registry)
-13. [Darknode Payments (!)](https://github.com/renproject/ren/wiki/Darknode-Payments)
-14. [Darknode Slasher (!)](https://github.com/renproject/ren/wiki/Darknode-Slasher)
+12. [Phases](https://github.com/renproject/ren/wiki/Phases)
 15. [Audits](./Audits)
 
 ## API
