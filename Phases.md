@@ -4,7 +4,7 @@ There are three phases to the rollout, **sub-zero**, **zero**, and **one**, wher
 
 1. [Sub-zero](#sub-zero)
 2. [Zero](#zero)
-3. [One](#one)
+3. [One (and beyond)](#one-and-beyond)
 
 ## Sub-zero
 
@@ -35,7 +35,7 @@ By the end of this phase **zero**, RenVM will be fully decentralised. All networ
 
 When the core is enabled, node operators will be exposed to slashing risk in accordance with the slashing conditions for consensus. When shards are enabled, node operators will be exposed to slashing risk in accordance with the slashing conditions for execution. In general, slashing can occur whenever nodes behave maliciously, go offline for an extended amount of time.
 
-## One
+## One (and beyond)
 
 Phase **one** is the final phase of RenVM. This phase begins once all features have be released, and RenVM has become fully decentralised. From this point onwards, all changes to RenVM will be governed by node operators and REN holders.
 
