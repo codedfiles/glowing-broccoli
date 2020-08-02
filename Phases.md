@@ -2,6 +2,10 @@ RenVM will move through multiple phases of deployment as it slowly becomes a ful
 
 There are three phases to the rollout, **sub-zero**, **zero**, and **one**, where each phase is a milestone achieved with the complete deployment of feature-set. It is important to note that phases do not mark specific moments in time when a feature-sets will be enabled. It is not “all or nothing”. Rather, phases are moved to reflexively, in response to all the features in a feature-set having been enabled. Each feature can be enabled individually, one-by-one. Only after all of the features from a feature-set have been enabled will RenVM be said to have moved to the respective phase.
 
+1. [Sub-zero](#sub-zero)
+2. [Zero](#zero)
+3. [One](#one)
+
 ## Sub-zero
 
 Phase sub-zero is the opening phase of RenVM's existence, and was released on the 27th May 2020, at 11am GMT. It represents the minimum viable feature-set required to achieve interoperability between blockchains using MPC cryptography.
