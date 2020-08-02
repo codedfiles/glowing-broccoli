@@ -1,21 +1,13 @@
-## Specification
-
 1. [Introduction](https://github.com/renproject/ren/wiki)
-4. [Consensus (WIP)](https://github.com/renproject/ren/wiki/Consensus)
-5. [Execution (WIP)](https://github.com/renproject/ren/wiki/Execution)
-5. [Sharding](https://github.com/renproject/ren/wiki/Sharding)
-6. [Greycore](https://github.com/renproject/ren/wiki/Greycore)
-7. [Gateways](https://github.com/renproject/ren/wiki/Gateways)
-8. [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness)
-9. [Fees and Economics](https://github.com/renproject/ren/wiki/Fees-and-Economics)
-10. [Supported Blockchains](https://github.com/renproject/ren/wiki/Supported-Blockchains)
-11. [REN](https://github.com/renproject/ren/wiki/REN)
-12. [Phases](https://github.com/renproject/ren/wiki/Phases)
-15. [Audits](./Audits)
+2. [Fees and Economics](https://github.com/renproject/ren/wiki/Fees-and-Economics)
+3. [Phases](https://github.com/renproject/ren/wiki/Phases)
+4. [Audits](./Audits)
 
-## API
-
-1. [Types (!)](https://github.com/renproject/ren/wiki/Types)
-2. [Contracts (!)](https://github.com/renproject/ren/wiki/Contracts)
-3. [Transactions (!)](https://github.com/renproject/ren/wiki/Transactions)
-4. [RPCs (WIP)](https://github.com/renproject/ren/wiki/RPCs)
+1. [Consensus (WIP)](https://github.com/renproject/ren/wiki/Consensus)
+2. [Execution (WIP)](https://github.com/renproject/ren/wiki/Execution)
+3. [Sharding](https://github.com/renproject/ren/wiki/Sharding)
+4. [Greycore](https://github.com/renproject/ren/wiki/Greycore)
+5. [Gateways](https://github.com/renproject/ren/wiki/Gateways)
+6. [Safety and Liveliness](https://github.com/renproject/ren/wiki/Safety-and-Liveliness)
+7. [Supported Blockchains](https://github.com/renproject/ren/wiki/Supported-Blockchains)
+8. [REN](https://github.com/renproject/ren/wiki/REN)
