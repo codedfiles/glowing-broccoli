@@ -1,4 +1,5 @@
-# Fees and Economics
+*RenVM is currently at the beginning of [phase sub-zero](https://github.com/renproject/ren/wiki/Phases).*
+
 RenVM assumes that Darknodes are rational, and will attempt to maximise their own profit. Because powering RenVM has a non-zero cost associated with it — CPU cycles, disk space, network bandwidth, and a REN bond are not free — Darknodes need to be economically rewarded. To this end, every time RenVM executes a cross-chain transaction, it takes a small fee and pays it to the Darknodes as a reward for powering the network. It is worth noting: some cross-chain transactions also require RenVM to pay for fees on the underlying chain (for example, the SATs-per-byte fee charged on Bitcoin). This fee is applied on top of the usual fees charged by RenVM.
 
 0. [Too Long; Didn't Read](#tldr)
