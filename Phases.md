@@ -1,3 +1,5 @@
+*RenVM is currently at the beginning of phase sub-zero.*
+
 RenVM will move through multiple phases of deployment as it slowly becomes a fully decentralised network. This slow rollout allows the Ren core developers to ensure that the network is safe during its nascent days, a period where third-party developers/user might make mistakes, critical bugs might be found, or design flaws might be exposed. It is prudent to acknowledge that these things happen, especially with new and complex systems, and to take steps to mitigate their impact.
 
 There are three phases to the rollout, **sub-zero**, **zero**, and **one**, where each phase is a milestone achieved with the complete deployment of feature-set. It is important to note that phases do not mark specific moments in time when a feature-sets will be enabled. It is not “all or nothing”. Rather, phases are moved to reflexively, in response to all the features in a feature-set having been enabled. Each feature can be enabled individually, one-by-one. Only after all of the features from a feature-set have been enabled will RenVM be said to have moved to the respective phase.
