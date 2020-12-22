@@ -1,4 +1,4 @@
-*RenVM is currently at the beginning of [phase sub-zero](https://github.com/renproject/ren/wiki/Phases).*
+*RenVM is currently at the beginning of [phase sub-zero](https://github.com/renproject/ren/wiki/Phases). This document is a work-in-progress.*
 
 0. [Too Long; Didn't Read](#tldr)
 1. [Design](#design)
