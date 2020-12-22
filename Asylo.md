@@ -19,6 +19,9 @@ A brief overview of the requirements:
 - Nodes would be required to run within a secure hardware enclave. Just as nodes currently require other nodes to have their identities bonded by 100K REN, so too would they require a success remote attestation.
 - Nodes would be required to communicate through Asylo's gRPC security stack. This provides enclave-to-enclave protection between remote enclaves.
 - Nodes would be required to run their underlying blockchain node infrastructure within a secure hardware enclave.
+- Nodes would be required to store all data in a way that is only accessible from the enclave (i.e. it is encrypted at rest).
+
+These requirements can be built into the official implementation of RenVM. This means that as part the attestation which verifies that a node is (a) running within an enclave, and (b) running an official implementation of RenVM, these requirements are able to be verified remotely.
 
 ### Driver
 
