@@ -22,7 +22,9 @@ A brief overview of the requirements:
 
 ### Driver
 
-> TODO
+Asylo, and its examples, are dominantly written in C++, and the current implementation of RenVM is written in Go. The simplest way to integrate Asylo would be to boot in Go, use a foreign-function-interface to call out to the required C++ code that configures and drives the enclave (using Asylo libraries). The C++ code running in the enclave would return control flow back to Go to run the rest of the application logic. This should minimise the integration requirements for porting the current implementation RenVM to run in secure hardware enclaves.
+
+The [POSIX runtime](https://asylo.dev/docs/reference/runtime.html#posix) provided by Asylo has everything we need for storage and networking.
 
 ### Networking
 
@@ -30,11 +32,11 @@ A brief overview of the requirements:
 
 ### Consensus and MPC
 
-> TODO
+Perhaps the most critical part of the RenVM codebase is its [consensus](https://github.com/renproject/hyperdrive) and [multi-party computation](https://github.com/renproject/mpc) implementations. However, these libraries have intentionally been built with no dependency on specific networking or storage implementations. Where required, they define interfaces that are expected to be implemented by the user of the library. This should make it trivial to port these implementations to run within secure hardware enclaves using Asylo.
 
 ### Multichain
 
-> TODO
+The majority of RenVM nodes use the Multichain API for accessing the underlying blockchains. Google Cloud supports managed Kubernetes clusters running on Shielded VMs. This should allow the Multichain API to run within secure hardware enclaves, reducing the risk of malicious behaviour by those operating the API. It is also possible for RenVM nodes to use stateless SPV proofs (and other log-scale proof systems) to verify transaction information from blockchains without the need of a remote API.
 
 ## Attestation
 
@@ -48,7 +50,7 @@ The former can be mitigated by using multiple secure hardware enclaves as suppor
 
 ### Safety
 
-> TODO
+The Byzantine fault-tolerant consensus mechanism used by RenVM is only able to within up to (but not including) 1/3rd of its nodes behaving maliciously. In the case where nodes are running in an Intel SGX hardware enclave, third-parties can perform an attestation procedure with any/all of the nodes to verify that they are in fact running in an enclave, and are actually running an official implementation of the RenVM. This is also a process done by the nodes themselves before admitting new nodes into the network, and would in itself be part of the official implementation of RenVM. An argument by induction shows that, if at any point more than 2/3rds of nodes are verifiable running the official implementation in an enclave, the safety of the network can never be compromised (unless the secure hardware enclaves themselves are compromised).
 
 ### Liveliness
 
