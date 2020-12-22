@@ -28,7 +28,14 @@ The [POSIX runtime](https://asylo.dev/docs/reference/runtime.html#posix) provide
 
 ### Networking
 
-> TODO
+RenVM nodes would use the [Enclave Key Exchange Protocol (EKEP)](https://asylo.dev/docs/concepts/ekep.html) to establish secure enclave-to-enclave connections with one another. This connection would be the conncetion through which all network messages between these nodes is sent. However, before sending any messages on this connection, the nodes would engage in a remote attestation procedure, to verify that the remote peer is (a) running in a secure hardware enclave, and (b) is running an official RenVM node binary.
+
+The biggest impact on the current implementation of RenVM would be to its networking layer: Airwave. Currently, Airwave uses its own custom messaging protocol over TCP (using [surge](https://github.com/renproject/surge) for serialisation), with a custom handshake for establishing secure peer-to-peer connection. However, it is designed to a variety of different transport layers and handshakes. In principle, it should be possible to add support for gRPC to the Airwave transport interface, and the support for EKEP to its handshake interface. The Asylo project also comes with a number of examples of how to use gRPC in the context of secure hardware enclaves:
+
+- [gRPC Server](https://github.com/google/asylo-examples/tree/master/grpc_server)
+- [Secure gRPC Server](https://github.com/google/asylo-examples/tree/master/secure_grpc)
+
+The [POSIX runtime](https://asylo.dev/docs/reference/runtime.html#posix) provided by Asylo has everything we need for storage and networking.
 
 ### Consensus and MPC
 
@@ -54,7 +61,11 @@ The Byzantine fault-tolerant consensus mechanism used by RenVM is only able to w
 
 ### Liveliness
 
-> TODO
+Although attestation procedures can be used to verify the nodes are running in a secure hardware enclave, and are running an official release, this cannot be used to ensure liveliness. It is always possible that a node is offline for a variety of reasons: intentionally attempting to disrupt network activity, in a temporary network partition, or even a fault in the underlying hardware.
+
+Assuming the security of secure hardware enclave, liveliness becomes the primary security concern of the network. Funds in RenVM would not be able to be stolen (since nodes would not be able to run software that has this capability). Liveliness of funds can be easily guaranteed: all gateways into which funds are deposited would have a secondary condition under which the funds can be spent. This secondary condition would allow the Ren core developer team, or a multi-sig controlled by multiple semi-trusted parties, to spend funds after 1 week. Because funds are rotated after 24 hours, the 1 week delay guarantees that the semi-trusted parties cannot compromise funds when RenVM is lively.
+
+This mechanism only ever needs to be engaged in the case where a shard becomes inactive for an entire week (a severe liveliness failure). This would require an attacker to take down 1/3rd of a shard for an entire week.
 
 ## Support
 
