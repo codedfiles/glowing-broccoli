@@ -13,3 +13,9 @@
 
 - Ethereum
 - Binance Smart Chain
+
+### Upcoming
+
+- Avalanche
+- Polkadot
+- Solana
